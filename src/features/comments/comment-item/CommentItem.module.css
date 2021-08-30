@@ -1,0 +1,31 @@
+.comment {
+	--comment-header-size: 1.125rem;
+	--comment-header-weight: 500;
+}
+
+.comment:not(:last-of-type) {
+	margin-bottom: 3rem;
+}
+
+.comment_image {
+	max-width: 100%;
+	height: 100px;
+	object-fit: contain;
+}
+
+.comment span {
+	font-size: var(--comment-header-size);
+	font-weight: var(--comment-header-weight);
+}
+
+.comment_username {
+	color: #4a4a4a;
+}
+
+.comment_email {
+	color: #0068c5;
+}
+
+.comment_body {
+	color: #5f6c84;
+}

@@ -1,39 +1,35 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import './App.css'
 
-import Home from './pages/Home';
-import About from './pages/About';
+import Header from './layouts/Header'
+import Wrapper from './layouts/Wrapper'
+import Posts from './pages/posts/Posts'
+import PostDetails from './pages/post-details/PostDetails'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+	return (
+		<Router>
+			<Header />
 
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+			<Wrapper>
+				<Switch>
+					<Route exact path={'/posts/:postId'}>
+						<PostDetails />
+					</Route>
 
-      <Router>
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
-  );
+					<Route exact path={['/', '/posts']}>
+						<Posts />
+					</Route>
+
+					<Route
+						path="*"
+						render={() => <p>404 - Page not found!</p>}
+					/>
+				</Switch>
+			</Wrapper>
+		</Router>
+	)
 }
 
-export default App;
+export default App
