@@ -1,6 +1,6 @@
 {
 	"short_name": "Posts",
-	"name": "Malltina Posts Test",
+	"name": "Posts Mock App",
 	"start_url": ".",
 	"display": "standalone",
 	"theme_color": "#000000",
