@@ -32,12 +32,15 @@ function Posts() {
 
 		const formData = Object.fromEntries(new FormData(e.target))
 
-		setPaginationData((prevState) => {
-			return {
-				...prevState,
-				activePage: Number(formData.pageNum),
-			}
-		})
+		// Checking for empty/null input value
+		if (!!formData.pageNum) {
+			setPaginationData((prevState) => {
+				return {
+					...prevState,
+					activePage: Number(formData.pageNum),
+				}
+			})
+		}
 	}
 
 	return (
@@ -50,40 +53,50 @@ function Posts() {
 				</p>
 			</div>
 
-			<div className="col-12 col-md-5 mt-2 mt-md-0 d-flex justify-content-end align-items-end">
-				<form
-					onSubmit={pageNumRequestHandler}
-					className="row g-3 pe-1 pe-sm-0 align-items-center"
-				>
-					<div className="col-auto">
-						<label htmlFor="pageNum" className="col-form-label">
-							Page
-						</label>
-					</div>
-					<div className="col-auto">
-						<input
-							type="number"
-							name="pageNum"
-							id="pageNum"
-							min="1"
-							max={paginationData.splitData.length}
-							defaultValue="1"
-							className="form-control form-control-sm"
-							style={{ maxWidth: '80px' }}
-						/>
-					</div>
-					<div className="col-auto">
-						<span className="form-text">
-							of {paginationData.splitData.length}
-						</span>
-					</div>
-					<div className="col-auto">
-						<button type="submit" className="btn btn-outline-dark">
-							Go
-						</button>
-					</div>
-				</form>
-			</div>
+			{/*
+				•••••••
+				Page selector
+				•••••••
+			*/}
+			{status === 'successful' && paginationData.splitData.length && (
+				<div className="col-12 col-md-5 mt-2 mt-md-0 d-flex justify-content-end align-items-end">
+					<form
+						onSubmit={pageNumRequestHandler}
+						className="row g-3 pe-1 pe-sm-0 align-items-center"
+					>
+						<div className="col-auto">
+							<label htmlFor="pageNum" className="col-form-label">
+								Page
+							</label>
+						</div>
+						<div className="col-auto">
+							<input
+								type="number"
+								name="pageNum"
+								id="pageNum"
+								min="1"
+								max={paginationData.splitData.length}
+								defaultValue="1"
+								className="form-control form-control-sm"
+								style={{ maxWidth: '80px' }}
+							/>
+						</div>
+						<div className="col-auto">
+							<span className="form-text">
+								of {paginationData.splitData.length}
+							</span>
+						</div>
+						<div className="col-auto">
+							<button
+								type="submit"
+								className="btn btn-outline-dark"
+							>
+								Go
+							</button>
+						</div>
+					</form>
+				</div>
+			)}
 
 			<div className="col-12 mt-4">
 				{status === 'pending' ? (
@@ -118,6 +131,11 @@ function Posts() {
 						•••••••
 					*/
 					<>
+						{/*
+							•••••••
+							Posts grid
+							•••••••
+						*/}
 						<div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 px-3 px-sm-0">
 							{paginationData.splitData.length &&
 								paginationData.splitData[
