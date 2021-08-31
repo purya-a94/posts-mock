@@ -27,17 +27,65 @@ function Posts() {
 		}
 	}, [data])
 
+	const pageNumRequestHandler = (e) => {
+		e.preventDefault()
+
+		const formData = Object.fromEntries(new FormData(e.target))
+
+		setPaginationData((prevState) => {
+			return {
+				...prevState,
+				activePage: Number(formData.pageNum),
+			}
+		})
+	}
+
 	return (
 		<div className="row pt-4 pb-5">
-			<div className="col-12">
+			<div className="col-12 col-md-7">
 				<h2>Posts List</h2>
-				<p>
+				<p className="mb-0">
 					Here you can see a list of all the posts. Click on an item
 					to see more.
 				</p>
 			</div>
 
-			<div className="col-12">
+			<div className="col-12 col-md-5 mt-2 mt-md-0 d-flex justify-content-end align-items-end">
+				<form
+					onSubmit={pageNumRequestHandler}
+					className="row g-3 pe-1 pe-sm-0 align-items-center"
+				>
+					<div className="col-auto">
+						<label htmlFor="pageNum" className="col-form-label">
+							Page
+						</label>
+					</div>
+					<div className="col-auto">
+						<input
+							type="number"
+							name="pageNum"
+							id="pageNum"
+							min="1"
+							max={paginationData.splitData.length}
+							defaultValue="1"
+							className="form-control form-control-sm"
+							style={{ maxWidth: '80px' }}
+						/>
+					</div>
+					<div className="col-auto">
+						<span className="form-text">
+							of {paginationData.splitData.length}
+						</span>
+					</div>
+					<div className="col-auto">
+						<button type="submit" className="btn btn-outline-dark">
+							Go
+						</button>
+					</div>
+				</form>
+			</div>
+
+			<div className="col-12 mt-4">
 				{status === 'pending' ? (
 					/*
 						•••••••
@@ -50,7 +98,7 @@ function Posts() {
 							color="#00BFFF"
 							height={40}
 							width={40}
-							className="col-auto my-5"
+							className="col-auto"
 						/>
 					</div>
 				) : status === 'error' ? (
@@ -60,7 +108,7 @@ function Posts() {
 						•••••••
 					*/
 					<div className="row flex-column justify-content-center align-items-center">
-						<p className="col-auto mt-5">Something went wrong!</p>
+						<p className="col-auto">Something went wrong!</p>
 						<span className="col-auto">{error}</span>
 					</div>
 				) : (
