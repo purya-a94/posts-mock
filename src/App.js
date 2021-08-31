@@ -11,6 +11,7 @@ import Header from './layouts/Header'
 import Wrapper from './layouts/Wrapper'
 import Posts from './pages/posts/Posts'
 import PostDetails from './pages/post-details/PostDetails'
+import NotFound from './pages/NotFound'
 
 function App() {
 	return (
@@ -33,10 +34,9 @@ function App() {
 						render={() => <Redirect to="/posts" />}
 					/>
 
-					<Route
-						path="*"
-						render={() => <p>404 - Page not found!</p>}
-					/>
+					<Route path="*">
+						<NotFound />
+					</Route>
 				</Switch>
 			</Wrapper>
 		</Router>

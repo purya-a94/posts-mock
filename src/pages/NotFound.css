@@ -1,0 +1,189 @@
+.not_found {
+	font-family: 'Lato', sans-serif;
+	font-size: 1.5rem;
+	color: #293b49;
+}
+
+.not_found a {
+	text-decoration: none;
+}
+
+.not_found .center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.not_found .error {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-content: center;
+}
+
+.not_found .number {
+	font-weight: 900;
+	font-size: 15rem;
+	line-height: 1;
+}
+
+.not_found .illustration {
+	position: relative;
+	width: 12.2rem;
+	margin: 0 2.1rem;
+}
+
+.not_found .circle {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 12.2rem;
+	height: 11.4rem;
+	border-radius: 50%;
+	background-color: #293b49;
+}
+
+.not_found .clip {
+	position: absolute;
+	bottom: 0.3rem;
+	left: 50%;
+	transform: translateX(-50%);
+	overflow: hidden;
+	width: 12.5rem;
+	height: 13rem;
+	border-radius: 0 0 50% 50%;
+}
+
+.not_found .paper {
+	position: absolute;
+	bottom: -0.3rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 9.2rem;
+	height: 12.4rem;
+	border: 0.3rem solid #293b49;
+	background-color: white;
+	border-radius: 0.8rem;
+}
+
+.not_found .paper::before {
+	content: '';
+	position: absolute;
+	top: -0.5rem;
+	right: -0.65rem;
+	width: 1.3rem;
+	height: 1rem;
+	background-color: white;
+	border-bottom: 0.3rem solid #293b49;
+	transform: rotate(45deg);
+}
+
+.not_found .face {
+	position: relative;
+	margin-top: 2.3rem;
+}
+
+.not_found .eyes {
+	position: absolute;
+	top: 0;
+	left: 2rem;
+	width: 4.6rem;
+	height: 0.8rem;
+}
+
+.not_found .eye {
+	position: absolute;
+	bottom: 0;
+	width: 0.8rem;
+	height: 0.8rem;
+	border-radius: 50%;
+	background-color: #293b49;
+	animation-name: eye;
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+}
+
+.not_found .eye-left {
+	left: 0;
+}
+
+.not_found .eye-right {
+	right: 0;
+}
+
+@keyframes eye {
+	0% {
+		height: 0.8rem;
+	}
+	50% {
+		height: 0.8rem;
+	}
+	52% {
+		height: 0.1rem;
+	}
+	54% {
+		height: 0.8rem;
+	}
+	100% {
+		height: 0.8rem;
+	}
+}
+
+.not_found .rosyCheeks {
+	position: absolute;
+	top: 1.6rem;
+	width: 1rem;
+	height: 0.2rem;
+	border-radius: 50%;
+	background-color: #fdabaf;
+}
+
+.not_found .rosyCheeks-left {
+	left: 1rem;
+}
+
+.not_found .rosyCheeks-right {
+	right: 1rem;
+}
+
+.not_found .mouth {
+	position: absolute;
+	top: 3.1rem;
+	left: 50%;
+	width: 1.6rem;
+	height: 0.2rem;
+	border-radius: 0.1rem;
+	transform: translateX(-50%);
+	background-color: #293b49;
+}
+
+.not_found .text {
+	margin-top: 5rem;
+	font-weight: 300;
+	color: #293b49;
+}
+
+.not_found .button {
+	margin-top: 4rem;
+	padding: 1.2rem 3rem;
+	color: white;
+	background-color: #04cba0;
+}
+
+.not_found .button:hover {
+	background-color: #01ac88;
+}
+
+.not_found .by {
+	position: absolute;
+	bottom: 0.5rem;
+	left: 0.5rem;
+	text-transform: uppercase;
+	color: #293b49;
+}
+
+.not_found .byLink {
+	color: #04cba0;
+}
